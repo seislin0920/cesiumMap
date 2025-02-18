@@ -12,7 +12,17 @@ const CesiumTest = () => {
       animation: false, // 是否顯示動畫控制
       timeline: false, // 是否顯示時間軸
       sceneModePicker: false, // 是否顯示視角切換
+      terrain: Cesium.Terrain.fromWorldTerrain(), //  地形
     });
+    
+    // Fly the camera to Denver, Colorado at the given longitude, latitude, and height.
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(121, 23.5, 1500000),
+    });
+
+    // 3D建築 (TypeError: primitive.isDestroyed is not a function)
+    // const osmBuildings = viewer.scene.primitives.add(Cesium.createOsmBuildingsAsync());
+
     // 標記point
     let point = viewer.entities.add({
       position: Cesium.Cartesian3.fromDegrees(121, 23.5),
