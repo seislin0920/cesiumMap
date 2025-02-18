@@ -1,6 +1,6 @@
 import { Viewer, Entity, CameraFlyTo } from "resium";
-import { Cartesian3 } from "cesium";
-import * as Cesium from "cesium";
+import { Cartesian3 } from "../node_modules/cesium";
+import * as Cesium from "../node_modules/cesium";
 
 const CesiumMap = () => {
   return (

@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   define: {
     CESIUM_BASE_URL: JSON.stringify('/Cesium'),
+  },
+  optimizeDeps: {
+    include: ['mersenne-twister']
   }
 })
