@@ -9,12 +9,12 @@ const CesiumTest = () => {
 
     // 初始化 Cesium Viewer
     const viewer = new Cesium.Viewer(mapRef.current, {
-      animation: false, // 是否顯示動畫控制
-      timeline: false, // 是否顯示時間軸
+      animation: true, // 是否顯示動畫控制
+      timeline: true, // 是否顯示時間軸
       sceneModePicker: false, // 是否顯示視角切換
       terrain: Cesium.Terrain.fromWorldTerrain(), //  地形
     });
-    
+
     // Fly the camera to Denver, Colorado at the given longitude, latitude, and height.
     viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(121, 23.5, 1500000),
@@ -58,6 +58,15 @@ const CesiumTest = () => {
         closeBottom: false, // 底部是否密合
       },
     });
+
+    // 飛航軌跡
+    const data = '[{ "longitude": 121.523333, "latitude": 25.15, "height": 3000 }, { "longitude": 120.3508, "latitude": 23, "height": 12000 }]';
+    const flightData = JSON.parse(data);
+    
+    const timeSpan = 30;
+    const positionProperty = new Cesium.SampledPositionProperty();
+
+    
 
     return () => {
       viewer.destroy(); // 銷毀 Cesium Viewer
